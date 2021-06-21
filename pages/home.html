@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .content {
+            border: 3px solid #f1f1f1;
+        }
+
+        a {
+            font-size: 18px;
+        }
+
+        .link {
+            padding: 13px;
+            cursor: pointer;
+            
+        }
+
+        .time {
+            text-align: center;
+            margin-top: 40px;
+            font-size: 21px;
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Home Page</h2>
+    <div class="content">
+        <div class='time'>
+            <b>
+                Current Time:<span id="curtime"></span></b>
+            <div class='link'>
+                <a onClick="submitLogout()">Logout</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        (function () {
+            if (!localStorage.uname && !localStorage.psw) {
+                window.location.pathname = '/';
+            }
+        })();
+        (function () {
+            const date = new Date();
+            const time = date.toLocaleTimeString();
+            document.getElementById('curtime').innerHTML = time;
+        })();
+
+        function submitLogout() {
+            localStorage.removeItem('uname');
+            localStorage.removeItem('psw');
+            window.location.pathname = '/';
+
+        }
+    </script>
+</body>
+
+</html>
